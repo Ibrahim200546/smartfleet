@@ -1,0 +1,28 @@
+[project]
+name = "smartfleet"
+version = "0.1.0"
+description = "Fleet monitoring backend with Teltonika protocol ingestion"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "sqlalchemy>=2.0.30",
+    "aiosqlite>=0.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.0",
+]
+
+[project.scripts]
+smartfleet-tcp = "smartfleet.tcp.server:main"
+smartfleet-api = "smartfleet.api.main:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
